@@ -1,0 +1,19 @@
+{
+  "name": "mindweave-memory-engine",
+  "version": "1.0.0",
+  "description": "MindWeave 记忆引擎后端",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.8.0",
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
+    "node-fetch": "^2.6.12",
+    "sqlite3": "^6.0.1"
+  }
+}
