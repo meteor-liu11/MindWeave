@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWeave 思维编织</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            width: 360px;
+            padding: 16px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .header i {
+            font-size: 24px;
+            color: #63799B;
+        }
+        .btn {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 12px;
+            padding: 12px;
+        }
+        .tip {
+            text-align: center;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <i class="ri-brain-line"></i>
+        <h1>MindWeave 思维编织</h1>
+    </div>
+
+    <button class="btn btn-primary" id="open-sidebar-btn">
+        <i class="ri-layout-right-line"></i>
+        打开侧边栏
+    </button>
+
+    <button class="btn btn-secondary" id="open-editor-btn">
+        <i class="ri-edit-line"></i>
+        打开编辑器（新标签页）
+    </button>
+
+    <div class="tip">
+        💡 选中网页文字，右键点击「加入MindWeave思维导图」
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

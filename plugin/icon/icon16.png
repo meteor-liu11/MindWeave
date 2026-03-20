@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- 淡灰蓝配色渐变定义 -->
+  <defs>
+    <linearGradient id="lightBlueGray" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#AAB6C2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7286A0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bookSide" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7286A0;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#5A6A7D;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+
+  <!-- 图标圆角背景（可选，不需要可直接删除） -->
+  <rect x="0" y="0" width="256" height="256" rx="36" ry="36" fill="#F5F5F7" />
+
+  <!-- 上层：W型倒V书本（书脊朝上，摊开的书本） -->
+  <g>
+    <!-- 书本主体（倒V书页） -->
+    <polygon points="48,80 128,40 208,80 168,120 128,80 88,120" fill="url(#lightBlueGray)" stroke="#7286A0" stroke-width="2" stroke-linejoin="round" />
+    <!-- 书本厚度侧边 -->
+    <polygon points="208,80 208,100 168,140 168,120" fill="url(#bookSide)" stroke="#7286A0" stroke-width="2" stroke-linejoin="round" />
+    <polygon points="48,80 48,100 88,140 88,120" fill="url(#bookSide)" stroke="#7286A0" stroke-width="2" stroke-linejoin="round" />
+    <!-- 书脊细节 -->
+    <line x1="128" y1="40" x2="128" y2="80" stroke="#F5F5F7" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- 下层：M型正V书本（书脊朝下，摊开的书本，与上层交叉编织） -->
+  <g>
+    <!-- 书本主体（正V书页） -->
+    <polygon points="48,176 128,216 208,176 168,136 128,176 88,136" fill="url(#lightBlueGray)" stroke="#7286A0" stroke-width="2" stroke-linejoin="round" />
+    <!-- 书本厚度侧边 -->
+    <polygon points="208,176 208,156 168,116 168,136" fill="url(#bookSide)" stroke="#7286A0" stroke-width="2" stroke-linejoin="round" />
+    <polygon points="48,176 48,156 88,116 88,136" fill="url(#bookSide)" stroke="#7286A0" stroke-width="2" stroke-linejoin="round" />
+    <!-- 书脊细节 -->
+    <line x1="128" y1="216" x2="128" y2="176" stroke="#F5F5F7" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- 交叉衔接细节（还原手绘的交错编织感） -->
+  <line x1="88" y1="120" x2="88" y2="136" stroke="#5A6A7D" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+  <line x1="168" y1="120" x2="168" y2="136" stroke="#5A6A7D" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+</svg>

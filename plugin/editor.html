@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWeave 思维画布</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 进度条专属样式，确保不被覆盖 */
+        #ai-progress-container {
+            display: none;
+            padding: 16px;
+            background: #f0f5ff;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 999999 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        #progress-bar {
+            transition: width 0.3s ease-out !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== 必须放在最顶部：实时AI思考进度条 ========== -->
+    <div id="ai-progress-container">
+        <div id="progress-title" style="font-size: 14px; color: #333; margin-bottom: 8px; font-weight: 500;">
+            正在准备处理...
+        </div>
+        <div style="width: 100%; height: 6px; background: #e8e8e8; border-radius: 3px; overflow: hidden; margin-bottom: 6px;">
+            <div id="progress-bar" style="width: 0%; height: 100%; background: #63799B; border-radius: 3px;"></div>
+        </div>
+        <div id="progress-detail" style="font-size: 12px; color: #666;">
+            预计1秒内完成
+        </div>
+    </div>
+
+    <!-- ========== 顶部工具栏 ========== -->
+    <div class="editor-toolbar">
+        <div class="toolbar-left">
+            <button id="back-btn" class="btn btn-secondary"><i class="ri-arrow-left-line"></i> 返回</button>
+            <input type="text" id="map-title-input" class="input" style="width: 200px; margin-left: 12px;" placeholder="思维导图标题">
+        </div>
+        <div class="toolbar-center">
+            <button id="zoom-in-btn" class="btn btn-secondary"><i class="ri-zoom-in-line"></i></button>
+            <button id="zoom-out-btn" class="btn btn-secondary"><i class="ri-zoom-out-line"></i></button>
+            <button id="reset-view-btn" class="btn btn-secondary"><i class="ri-refresh-line"></i> 重置视图</button>
+        </div>
+        <div class="toolbar-right">
+            <button id="save-btn" class="btn btn-primary"><i class="ri-save-line"></i> 保存导图</button>
+            <button id="generate-memory-btn" class="btn btn-secondary"><i class="ri-brain-line"></i> 生成记忆Prompt</button>
+            <button id="deploy-memory-btn" class="btn btn-secondary"><i class="ri-rocket-line"></i> 部署记忆引擎</button>
+        </div>
+    </div>
+
+    <!-- ========== 迷你工具栏（选中文本时显示） ========== -->
+    <div id="mini-toolbar" class="mini-toolbar" style="display: none; position: fixed; z-index: 99999;">
+        <button id="weave-to-map-btn" class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;">
+            <i class="ri-add-circle-line"></i> 编织到思维画布
+        </button>
+    </div>
+
+    <!-- ========== 思维导图画布 ========== -->
+    <div id="canvas-container" class="canvas-container">
+        <svg id="connections-svg" class="connections-svg"></svg>
+        <div id="mindmap-canvas" class="mindmap-canvas"></div>
+    </div>
+
+    <!-- ========== 节点编辑面板 ========== -->
+    <div id="node-panel" class="node-panel" style="display: none;">
+        <div class="panel-header">
+            <h3>编辑节点</h3>
+            <button id="close-panel-btn" class="btn btn-secondary" style="padding: 4px 8px;"><i class="ri-close-line"></i></button>
+        </div>
+        <div class="panel-content">
+            <label>节点内容</label>
+            <textarea id="node-topic-input" class="input" rows="4"></textarea>
+            <label>关键词（逗号分隔）</label>
+            <input type="text" id="node-keywords-input" class="input">
+            <div class="btn-group" style="margin-top: 16px;">
+                <button id="delete-node-btn" class="btn btn-secondary" style="flex: 1; background: #ff4d4f; color: white;">删除节点</button>
+                <button id="save-node-btn" class="btn btn-primary" style="flex: 1;">保存修改</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="editor.js"></script>
+</body>
+</html>

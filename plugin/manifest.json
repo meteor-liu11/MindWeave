@@ -1,0 +1,59 @@
+{
+    "manifest_version": 3,
+    "name": "MindWeave 思维编织",
+    "version": "1.0.0",
+    "description": "思维导图即AI记忆结构，让AI按你的知识体系思考",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "tabs",
+        "contextMenus",
+        "sidePanel"
+    ],
+    "host_permissions": [
+        "<all_urls>",
+        "https://ark.cn-beijing.volces.com/*",
+        "http://localhost:3000/*"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; object-src 'none';"
+    },
+    "side_panel": {
+        "default_path": "index.html"
+    },
+    "action": {
+        "default_title": "MindWeave 思维编织"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+       "content_scripts": [
+           {
+               "matches": ["<all_urls>"],
+               "js": ["content.js"],
+               "css": ["style.css"],
+               "run_at": "document_end",
+               "all_frames": true
+           },
+           {
+               "matches": [
+                   "*://*.doubao.com/*",
+                   "*://*.chat.openai.com/*",
+                   "*://*.kimi.moonshot.cn/*",
+                   "*://*.qianwen.aliyun.com/*"
+               ],
+               "js": ["ai-page-inject.js"],
+               "css": ["style.css"],
+               "run_at": "document_start",
+               "all_frames": true
+           }
+       ],
+    "web_accessible_resources": [
+        {
+            "resources": ["*.html", "*.js", "*.css"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
